@@ -4,7 +4,7 @@ import vueJsx from './vue-jsx';
 import vueSetupExtend from './vue-setup-extend';
 import html from './html';
 import autoImport from './auto-import';
-import windicss from './windicss';
+import unocss from './unocss';
 import mock from './mock';
 import visualizer from './visualizer';
 
@@ -25,7 +25,7 @@ export function setupVitePlugins(
     vueSetupExtend,
     html(configEnv),
     ...autoImport(srcPath),
-    windicss,
+    unocss,
     mock,
   ];
 

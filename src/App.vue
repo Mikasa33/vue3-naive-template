@@ -8,6 +8,14 @@
     <img alt="Vue logo" class="logo" src="/@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
+      <div>
+        <div
+          class="flex-center mb-4 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-[hsla(160,100%,37%,1)] hover:bg-[hsla(160,100%,37%,0.2)] border-none cursor-pointer transition-base"
+        >
+          <div class="text-xl i-icon-park-outline:plus" /> Unocss
+        </div>
+      </div>
+
       <HelloWorld msg="You did it!" />
 
       <nav>

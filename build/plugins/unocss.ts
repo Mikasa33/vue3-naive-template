@@ -1,11 +1,8 @@
-import { defineConfig } from 'vite-plugin-windicss';
+import unocss from 'unocss/vite';
+import { presetUno, presetAttributify, presetIcons } from 'unocss';
 
-export default defineConfig({
-  extract: {
-    include: ['src/**/*.{vue,html,jsx,tsx}', 'public/**/*.{html}', './*.html'],
-    exclude: ['node_modules', '.git', './stats.html'],
-  },
-  darkMode: 'class',
+export default unocss({
+  presets: [presetUno(), presetAttributify(), presetIcons()],
   shortcuts: {
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
@@ -42,9 +39,4 @@ export default defineConfig({
     'ellipsis-text': 'nowrap-hidden overflow-ellipsis',
     'transition-base': 'transition-all duration-300 ease-in-out',
   },
-  theme: {
-    extend: {},
-  },
-  variants: {},
-  plugins: [],
 });
