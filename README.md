@@ -44,3 +44,24 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Todo
+- [ ] axios
+- [ ] auth
+- [ ] theme
+
+## Features
+
+- vite 2.x
+- vue 3.x
+- vue-router 4.x
+- pinia 2.x
+- typescript 4.x
+- eslint
+- prettier
+- less
+- unocss
+- iconify
+- unplugin-auto-import
+- unplugin-icons
+- mockjs
