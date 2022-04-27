@@ -48,7 +48,6 @@ npm run lint
 ## Todo
 - [ ] axios
 - [ ] auth
-- [ ] theme
 
 ## Features
 
@@ -65,3 +64,4 @@ npm run lint
 - unplugin-auto-import
 - unplugin-icons
 - mockjs
+- dark mode
