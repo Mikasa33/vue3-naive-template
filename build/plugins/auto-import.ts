@@ -8,7 +8,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 export default (srcPath: string) => {
   return [
     AutoImport({
-      dts: 'typings/auto-imports.d.ts',
+      dts: 'src/typings/auto-imports.d.ts',
       imports: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
     }),
     Icons({
@@ -20,7 +20,7 @@ export default (srcPath: string) => {
       defaultClass: 'inline-block',
     }),
     Components({
-      dts: 'typings/auto-components.d.ts',
+      dts: 'src/typings/auto-components.d.ts',
       resolvers: [
         IconsResolver({ customCollections: ['custom'], componentPrefix: 'icon' }),
         NaiveUiResolver(),

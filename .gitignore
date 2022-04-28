@@ -27,5 +27,5 @@ coverage
 *.sln
 *.sw?
 
-typings/auto-components.d.ts
-typings/auto-imports.d.ts
+auto-components.d.ts
+auto-imports.d.ts
