@@ -1,11 +1,15 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from 'vue-router';
+  import { toggleDark } from '/@/composables';
 </script>
 
 <template>
   <div class="flex-center flex-col h-100vh bg-light-50 dark:bg-dark-500">
-    <div>
-      <ToggleDark class="text-orange-500 cursor-pointer" />
+    <div
+      class="flex-center mb-4 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-600 border-none cursor-pointer transition-base"
+      @click="toggleDark()"
+    >
+      <DarkIcon />
     </div>
 
     <nav>
