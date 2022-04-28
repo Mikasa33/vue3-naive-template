@@ -5,9 +5,7 @@ specifiers:
   '@iconify/vue': ^3.2.1
   '@rushstack/eslint-patch': ^1.1.0
   '@types/node': ^16.11.31
-  '@unocss/preset-attributify': ^0.31.17
-  '@unocss/preset-icons': ^0.31.17
-  '@unocss/preset-uno': ^0.31.17
+  '@unocss/reset': ^0.32.1
   '@vitejs/plugin-vue': ^2.3.1
   '@vitejs/plugin-vue-jsx': ^1.3.10
   '@vue/eslint-config-prettier': ^7.0.0
@@ -50,9 +48,7 @@ devDependencies:
   '@iconify/vue': 3.2.1_vue@3.2.33
   '@rushstack/eslint-patch': 1.1.3
   '@types/node': 16.11.31
-  '@unocss/preset-attributify': 0.31.17
-  '@unocss/preset-icons': 0.31.17
-  '@unocss/preset-uno': 0.31.17
+  '@unocss/reset': 0.32.1
   '@vitejs/plugin-vue': 2.3.1_vite@2.9.6+vue@3.2.33
   '@vitejs/plugin-vue-jsx': 1.3.10
   '@vue/eslint-config-prettier': 7.0.0_eslint@8.14.0+prettier@2.6.2
@@ -776,6 +772,10 @@ packages:
 
   /@unocss/reset/0.31.17:
     resolution: {integrity: sha512-g3+bqtM6LetSEJ5NYhi2P4vdP8yVLUQLbNZUdMtggcmHXTY08ISWaJKWmnHptrO13rtRoQ+l9gFc4Y7kRpD7NA==}
+    dev: true
+
+  /@unocss/reset/0.32.1:
+    resolution: {integrity: sha512-tC2gCYY2isEDfBo1LWfcPAnxuM3my29fWtFUQRGvViZVTwYFjVIGD8BgIfiioifGumLunRW78qN7LT22fXoxgg==}
     dev: true
 
   /@unocss/scope/0.31.17:
