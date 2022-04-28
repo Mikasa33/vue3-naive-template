@@ -19,7 +19,7 @@ export default defineConfig((configEnv) => {
     css: {
       preprocessorOptions: {
         less: {
-          additionalData: "@import './src/styles/less/global.less';",
+          additionalData: "@import './src/styles/var.less';",
         },
       },
     },
