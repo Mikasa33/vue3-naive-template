@@ -9,13 +9,13 @@ export function createViteProxy(viteEnv: ImportMetaEnv) {
   const isOpenProxy = viteEnv.VITE_HTTP_PROXY === 'true';
   if (!isOpenProxy) return undefined;
 
-  const { http } = getEnvConfig(viteEnv);
+  const { server } = getEnvConfig(viteEnv);
 
   const proxy: Record<string, string | ProxyOptions> = {
-    [http.proxy]: {
-      target: http.url,
+    [server.proxy]: {
+      target: server.url,
       changeOrigin: true,
-      rewrite: (path) => path.replace(new RegExp(`^${http.proxy}`), ''),
+      rewrite: (path) => path.replace(new RegExp(`^${server.proxy}`), ''),
     },
   };
 

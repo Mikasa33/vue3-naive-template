@@ -32,7 +32,7 @@ const serviceEnvConfig: ServiceEnv = {
 export function getEnvConfig(env: ImportMetaEnv) {
   const { VITE_ENV_TYPE = 'dev' } = env;
   const envConfig = {
-    http: serviceEnvConfig[VITE_ENV_TYPE],
+    server: serviceEnvConfig[VITE_ENV_TYPE],
   };
   return envConfig;
 }
