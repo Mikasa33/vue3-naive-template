@@ -4,10 +4,6 @@ declare module '*.vue' {
   export default component
 }
 
-declare interface Window {
-  
-}
-
 /**
  * env环境类型
  * - dev: 后台开发环境
@@ -35,8 +31,14 @@ interface ImportMetaEnv {
   readonly VITE_ENV_TYPE?: EnvType;
   // 开启请求代理
   readonly VITE_HTTP_PROXY?: 'true' | 'false';
+  // 开启 MOCK
+  readonly VITE_USE_MOCK?: 'true' | 'false';
   // 是否开启打包文件大小结果分析
   readonly VITE_VISUALIZER?: 'true' | 'false';
   // hash路由模式
   readonly VITE_HASH_ROUTE?: 'true' | 'false';
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
