@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { RouterLink, RouterView } from 'vue-router';
-  import { toggleDark } from '/@/composables';
+  import { useDarkMode } from '/@/composables';
+
+  const { toggleDark } = useDarkMode();
 </script>
 
 <template>
@@ -15,6 +17,7 @@
     <nav>
       <RouterLink to="/" class="p-4 text-blue-800 dark:text-blue-400">Home</RouterLink>
       <RouterLink to="/about" class="p-4 text-blue-800 dark:text-blue-400">About</RouterLink>
+      <RouterLink to="/error" class="p-4 text-blue-800 dark:text-blue-400">Error</RouterLink>
     </nav>
 
     <RouterView />
