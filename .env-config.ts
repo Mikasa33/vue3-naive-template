@@ -6,6 +6,8 @@ type ServiceEnv = Record<
     url: string;
     // 代理地址
     proxy: string;
+    // Mock 地址
+    mock: string;
   }
 >;
 
@@ -14,14 +16,17 @@ const serviceEnvConfig: ServiceEnv = {
   dev: {
     url: 'http://localhost:7001/api',
     proxy: '/api',
+    mock: '/mock',
   },
   test: {
     url: 'http://localhost:7001/api',
     proxy: '/api',
+    mock: '/mock',
   },
   prod: {
     url: 'http://localhost:7001/api',
     proxy: '/api',
+    mock: '/mock',
   },
 };
 
