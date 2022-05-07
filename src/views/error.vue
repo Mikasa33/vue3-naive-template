@@ -1,7 +1,8 @@
 <script setup lang="ts">
   import { getDemoError } from '/@/services';
 
-  const { error, isLoading, isFinished } = getDemoError();
+  const { data, error, isLoading, isFinished } = getDemoError();
+  console.log(data, error);
 </script>
 
 <template>

@@ -16,8 +16,9 @@
 
     <nav>
       <RouterLink to="/" class="p-4 text-blue-800 dark:text-blue-400">Home</RouterLink>
-      <RouterLink to="/about" class="p-4 text-blue-800 dark:text-blue-400">About</RouterLink>
+      <RouterLink to="/fail" class="p-4 text-blue-800 dark:text-blue-400">Fail</RouterLink>
       <RouterLink to="/error" class="p-4 text-blue-800 dark:text-blue-400">Error</RouterLink>
+      <RouterLink to="/auth" class="p-4 text-blue-800 dark:text-blue-400">Auth</RouterLink>
     </nav>
 
     <RouterView />
