@@ -7,7 +7,7 @@ export function resultSuccess<T>(data: T, { message = '请求成功' } = {}): Se
   };
 }
 
-export function resultError(message = '请求失败', { code = -1, data = null } = {}): Service.MockServiceResult {
+export function resultError(message = '请求失败', { code = 500, data = null } = {}): Service.MockServiceResult {
   return {
     code,
     data,
