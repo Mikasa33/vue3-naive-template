@@ -11,6 +11,9 @@ const apis: MockMethod[] = [
       if (id === 2) {
         return resultError();
       }
+      if (id === 3) {
+        return resultError('请重新登录', { code: 401 });
+      }
       return resultSuccess({
         id,
         name: 'demo',
