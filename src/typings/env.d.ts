@@ -12,7 +12,7 @@ declare module '*.vue' {
  */
 type EnvType = 'dev' | 'test' | 'prod';
 
-interface ImportMetaEnv {
+interface ViteEnv {
   // 项目基本地址
   readonly VITE_BASE_URL: string;
   // 项目名称
@@ -39,6 +39,6 @@ interface ImportMetaEnv {
   readonly VITE_HASH_ROUTE?: 'true' | 'false';
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+interface ImportMetaEnv extends ViteEnv {
+  __: unknown;
 }
