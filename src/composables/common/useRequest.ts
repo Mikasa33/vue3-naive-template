@@ -5,7 +5,8 @@ import { useAxios } from '@vueuse/integrations/useAxios';
 import { get, merge, isEmpty } from 'lodash';
 import { stringify } from 'qs';
 import { getEnvConfig } from '/~/.env-config';
-import router from '/@/router';
+import { router } from '/@/router';
+import { useUserStoreWithOut } from '/@/store/modules/user';
 import { isUnDef } from '/@/utils/is';
 
 const { server } = getEnvConfig(import.meta.env);
@@ -19,10 +20,9 @@ const method = 'POST';
 /**
  * @description 显示错误信息
  * @param {String} message 错误信息
+ * @param {ErrorMessageMode} errorMessageMode 显示错误信息模式
  */
-function handleErrorMessage(error: any, errorMessageMode: ErrorMessageMode) {
-  const { message } = error;
-
+function handleErrorMessage(message: string, errorMessageMode: ErrorMessageMode) {
   // 显示错误信息
   console.error('error:', message);
 
@@ -142,8 +142,9 @@ function createService() {
  * @param {any} options 请求配置
  */
 function createRequest(config?: AxiosRequestConfig, options?: RequestOptions) {
+  const useUserStore = useUserStoreWithOut();
   // 处理配置选项
-  const token = 'TOKEN';
+  const token = useUserStore.getToken;
   const defaultConfig = {
     headers: {
       Authorization: token,
