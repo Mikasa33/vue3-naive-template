@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { getDemo } from '/@/services';
+  import { getDemo } from '/@/service/demo';
 
   const { data, error, isLoading, isFinished } = getDemo({ id: 3 });
   console.log(data, error);

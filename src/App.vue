@@ -1,12 +1,13 @@
 <script setup lang="ts">
-  import { RouterLink, RouterView } from 'vue-router';
-  import { useDarkMode } from '/@/composables';
+  import { RouterView } from 'vue-router';
+  // import { RouterLink, RouterView } from 'vue-router';
+  // import { useDarkMode } from '/@/composables';
 
-  const { toggleDark } = useDarkMode();
+  // const { toggleDark } = useDarkMode();
 </script>
 
 <template>
-  <div class="flex-center flex-col h-100vh bg-light-50 dark:bg-dark-500">
+  <!-- <div class="flex-center flex-col h-100vh bg-light-50 dark:bg-dark-500">
     <div
       class="flex-center mb-4 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-600 border-none cursor-pointer transition-base"
       @click="toggleDark()"
@@ -22,5 +23,6 @@
     </nav>
 
     <RouterView />
-  </div>
+  </div> -->
+  <RouterView />
 </template>
