@@ -46,7 +46,7 @@ npm run lint
 ```
 
 ## Todo
-- [ ] axios
+
 - [ ] auth
 
 ## Features
@@ -65,3 +65,4 @@ npm run lint
 - unplugin-icons
 - mockjs
 - dark mode
+- axios
