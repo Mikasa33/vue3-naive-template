@@ -12,7 +12,11 @@
     if (form.username !== '' && form.password !== '') {
       try {
         const data = await useUser.login(form);
-        console.log(data);
+        window.$notification.success({
+          title: '登录成功',
+          content: `欢迎回来，${data.value.nickName}`,
+          duration: 3000,
+        })
       } catch(error: any) {
         console.log(error.value.message);
       }
