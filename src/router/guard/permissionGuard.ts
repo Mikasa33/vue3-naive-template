@@ -10,10 +10,10 @@ const LOGIN_PATH = PageEnum.BASE_LOGIN;
 
 // 权限守卫
 export function createPermissionGuard(router: Router) {
-  const useUserStore = useUserStoreWithOut();
+  const useUser = useUserStoreWithOut();
 
   router.beforeEach(async (to, from, next) => {
-    const token = useUserStore.getToken;
+    const token = useUser.getToken;
 
     // 可直接访问白名单路由
     if (whitePathList.includes(to.path)) {
@@ -61,9 +61,9 @@ export function createPermissionGuard(router: Router) {
     }
 
     // 用户信息不存在，则获取用户信息
-    if (!useUserStore.getUserInfo) {
+    if (!useUser.getUserInfo) {
       try {
-        await useUserStore.getUserInfoAction();
+        await useUser.getUserInfoAction();
       } catch (err) {
         next();
         return;
