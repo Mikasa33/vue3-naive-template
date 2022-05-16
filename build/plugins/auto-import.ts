@@ -3,6 +3,7 @@ import Icons from 'unplugin-icons/vite';
 import IconsResolver from 'unplugin-icons/resolver';
 import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import Components from 'unplugin-vue-components/vite';
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 
 export default (srcPath: string) => {
   return [
@@ -22,6 +23,7 @@ export default (srcPath: string) => {
       dts: 'src/typings/auto-components.d.ts',
       resolvers: [
         IconsResolver({ customCollections: ['custom'], componentPrefix: 'icon' }),
+        NaiveUiResolver(),
       ],
     }),
   ];

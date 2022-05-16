@@ -48,6 +48,7 @@ npm run lint
 ## Todo
 
 - [ ] auth
+- [ ] layout
 
 ## Features
 
