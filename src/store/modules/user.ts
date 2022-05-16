@@ -64,6 +64,27 @@ export const useUserStore = defineStore({
       this.setUserInfo(unref(data));
       return data;
     },
+    async logout() {
+      if (this.getToken) {
+        // TODO: 退出登录接口
+      }
+      this.setToken(undefined);
+      this.setUserInfo(null);
+      router.replace(PageEnum.BASE_LOGIN);
+      window.$message.success('退出登录成功！');
+    },
+    confirmLogout() {
+      window.$dialog.info({
+        title: '提示',
+        showIcon: false,
+        content: '是否确认退出登录？',
+        positiveText: '确认',
+        negativeText: '取消',
+        onPositiveClick: () => {
+          this.logout();
+        },
+      });
+    },
   },
 });
 
