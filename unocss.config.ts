@@ -42,4 +42,18 @@ export default defineConfig({
     'ellipsis-text': 'nowrap-hidden overflow-ellipsis',
     'transition-base': 'transition-all duration-300 ease-in-out',
   },
+  theme: {
+    extend: {
+      transitionProperty: [
+        'margin',
+        'padding',
+        'width',
+        'height',
+        'background',
+        'background-color',
+        'border-color',
+        'opacity',
+      ],
+    },
+  },
 });
