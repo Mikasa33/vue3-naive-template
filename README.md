@@ -47,8 +47,6 @@ npm run lint
 
 ## Todo
 
-- [ ] auth
-- [ ] layout
 
 ## Features
 
@@ -67,3 +65,4 @@ npm run lint
 - mockjs
 - dark mode
 - axios
+- auth
