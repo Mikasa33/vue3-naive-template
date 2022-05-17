@@ -1,12 +1,13 @@
 const isDark = useDark();
 
 /**
- * @description 暗黑模式
+ * @description unocss 暗黑模式
  */
 export function useDarkMode() {
-  const toggleDark = useToggle(isDark);
+  const toggle = useToggle(isDark);
 
   return {
-    toggleDark,
+    isDark,
+    toggle,
   };
 }
