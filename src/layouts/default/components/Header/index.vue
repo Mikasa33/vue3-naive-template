@@ -10,7 +10,7 @@
 <template>
   <div class="flex">
     <Logo />
-    <div class="header flex justify-between w-full transition-padding" :class="[collapsed ? 'pl-64px' : 'pl-200px']">
+    <div class="header flex justify-between w-full transition-base" :class="[collapsed ? 'pl-64px' : 'pl-200px']">
       <div class="left">
         <Collapse />
       </div>

@@ -44,16 +44,9 @@ export default defineConfig({
   },
   theme: {
     extend: {
-      transitionProperty: [
-        'margin',
-        'padding',
-        'width',
-        'height',
-        'background',
-        'background-color',
-        'border-color',
-        'opacity',
-      ],
+      transition: {
+        'color': false,
+      },
     },
-  },
+  }
 });

@@ -13,4 +13,8 @@ const app = createApp(App);
 setupRouter(app);
 setupStore(app);
 
+const meta = document.createElement('meta');
+meta.name = 'naive-ui-style';
+document.head.appendChild(meta);
+
 app.mount('#app');

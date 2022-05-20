@@ -74,12 +74,12 @@ export const useUserStore = defineStore({
       window.$message.success('退出登录成功！');
     },
     confirmLogout() {
-      window.$dialog.info({
+      window.$dialog.create({
         title: '提示',
         showIcon: false,
         content: '是否确认退出登录？',
-        positiveText: '确认',
-        negativeText: '取消',
+        positiveText: '确 认',
+        negativeText: '取 消',
         onPositiveClick: () => {
           this.logout();
         },
