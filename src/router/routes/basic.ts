@@ -5,7 +5,7 @@ import { LAYOUT } from '/@/router/constant';
 export const rootRoute = {
   path: '/',
   name: 'Root',
-  redirect: PageEnum.BASE_HOME,
+  redirect: PageEnum.BASE_HOME_PATH,
   meta: {
     title: 'Root',
   },
@@ -13,8 +13,8 @@ export const rootRoute = {
 
 // 登录路由
 export const loginRoute = {
-  path: PageEnum.BASE_LOGIN,
-  name: 'Login',
+  path: PageEnum.BASE_LOGIN_PATH,
+  name: PageEnum.BASE_LOGIN_NAME,
   component: () => import('/@/views/sys/login/index.vue'),
   meta: {
     title: '登录',
@@ -44,18 +44,18 @@ export const redirectRoute = {
 // 找不到页面路由
 export const pageNotFoundRoute = {
   path: '/:path(.*)*',
-  name: 'PageNotFound',
+  name: PageEnum.ERROR_PAGE_NAME,
   component: LAYOUT,
   meta: {
-    title: 'PageNotFound',
+    title: '错误页面',
   },
   children: [
     {
       path: '/:path(.*)*',
-      name: 'PageNotFound',
+      name: PageEnum.ERROR_PAGE_NAME,
       component: () => import('/@/views/sys/exception/index.vue'),
       meta: {
-        title: 'PageNotFound',
+        title: '错误页面',
       },
     },
   ],
