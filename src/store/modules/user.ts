@@ -51,7 +51,7 @@ export const useUserStore = defineStore({
 
        const userInfo = await this.getUserInfoAction();
 
-      goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
+      goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME_PATH));
       return userInfo;
     },
     async getUserInfoAction(): Promise<any | null> {
