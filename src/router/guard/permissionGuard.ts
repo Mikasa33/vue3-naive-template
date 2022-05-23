@@ -2,6 +2,7 @@ import type { Router, RouteRecordRaw } from 'vue-router';
 
 import { whitePathList } from '/@/router/routes';
 import { useUserStoreWithOut } from '/@/store/modules/user';
+import { usePermissionStoreWithOut } from '/@/store/modules/permission';
 import { PageEnum } from '/@/enums/common/pageEnum';
 import { pageNotFoundRoute } from '/@/router/routes/basic';
 
@@ -11,6 +12,7 @@ const LOGIN_PATH = PageEnum.BASE_LOGIN;
 // 权限守卫
 export function createPermissionGuard(router: Router) {
   const useUser = useUserStoreWithOut();
+  const usePermission = usePermissionStoreWithOut();
 
   router.beforeEach(async (to, from, next) => {
     const token = useUser.getToken;
@@ -70,18 +72,30 @@ export function createPermissionGuard(router: Router) {
       }
     }
 
-    // if (to.name === pageNotFoundRoute.name) {
-    //   console.log(666)
-    //   // 动态添加路由后，此处应当重定向到 fullPath，否则会加载 404 页面内容
-    //   next({ path: to.fullPath, replace: true, query: to.query });
-    // } else {
-    //   console.log(777)
-    //   const redirectPath = (from.query.redirect || to.path) as string;
-    //   const redirect = decodeURIComponent(redirectPath);
-    //   const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect };
-    //   console.log(to.path, redirect, nextData)
-    //   next(nextData);
-    // }
+    if (permissionStore.getIsDynamicAddedRoute) {
+      next();
+      return;
+    }
+
+    const routes = await permissionStore.buildRoutesAction();
+
+    routes.forEach((route) => {
+      router.addRoute(route as unknown as RouteRecordRaw);
+    });
+
+    router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
+
+    permissionStore.setDynamicAddedRoute(true);
+
+    if (to.name === PAGE_NOT_FOUND_ROUTE.name) {
+      // 动态添加路由后，此处应当重定向到fullPath，否则会加载404页面内容
+      next({ path: to.fullPath, replace: true, query: to.query });
+    } else {
+      const redirectPath = (from.query.redirect || to.path) as string;
+      const redirect = decodeURIComponent(redirectPath);
+      const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect };
+      next(nextData);
+    }
     next()
   });
 }
