@@ -21,4 +21,4 @@ export const basicRoutes = [
 ];
 
 // 白名单
-export const whitePathList = [PageEnum.BASE_LOGIN];
+export const whiteNameList = [PageEnum.BASE_LOGIN_NAME];
