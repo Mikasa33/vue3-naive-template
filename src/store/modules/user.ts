@@ -70,7 +70,7 @@ export const useUserStore = defineStore({
       }
       this.setToken(undefined);
       this.setUserInfo(null);
-      router.replace(PageEnum.BASE_LOGIN);
+      router.replace(PageEnum.BASE_LOGIN_PATH);
       window.$message.success('退出登录成功！');
     },
     confirmLogout() {

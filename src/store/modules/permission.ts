@@ -1,10 +1,13 @@
 import { defineStore } from 'pinia';
 import { store } from '/@/store';
-import { cloneDeep } from 'lodash';
 import { getMenuList } from '/@/service/common/menu';
+import { transformObjToRoute } from '/@/router/helper/routeHelper'
+import { transformRouteToMenu } from '/@/router/helper/menuHelper';
 
 interface PermissionState {
   isDynamicAddedRoute: boolean;
+  menuList: any[];
+  tabList: any[];
 }
 
 export const usePermissionStore = defineStore({
@@ -12,105 +15,46 @@ export const usePermissionStore = defineStore({
   state: (): PermissionState => ({
     // 是否动态加载路由
     isDynamicAddedRoute: false,
+    // 菜单
+    menuList: [],
+    // 标签页
+    tabList: [],
   }),
   getters: {
     getDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute;
+    },
+    getMenuList(): any[] {
+      return this.menuList;
+    },
+    getTabList(): any[] {
+      return this.tabList;
     },
   },
   actions: {
     setDynamicAddedRoute(status: boolean) {
       this.isDynamicAddedRoute = status;
     },
-
+    setMenuList(menus: any[]) {
+      this.menuList = menus;
+    },
+    setTabList(tabs: any[]) {
+      this.tabList = tabs;
+    },
     async buildRoutesAction(): Promise<any[]> {
+      const loading = window.$message.loading('菜单加载中...');
 
-      window.$message.loading('菜单加载中...');
-
-      // !Simulate to obtain permission codes from the background,
-      // this function may only need to be executed once, and the actual project can be put at the right time by itself
-      let routeList: any[] = [];
       const { data, error } = await getMenuList();
       if (unref(error)) {
         return Promise.reject(error);
       }
-      routeList = data.value;
 
-      function transformRouteToMenu(routeModList: any[], routerMapping = false) {
-        const cloneRouteModList = cloneDeep(routeModList);
-        const routeList: any[] = [];
-      
-        cloneRouteModList.forEach((item) => {
-          if (routerMapping && item.meta.hideChildrenInMenu && typeof item.redirect === 'string') {
-            item.path = item.redirect;
-          }
-          if (item.meta?.single) {
-            const realItem = item?.children?.[0];
-            realItem && routeList.push(realItem);
-          } else {
-            routeList.push(item);
-          }
-        });
-        function treeMapEach(
-          data: any,
-          { children = 'children', conversion }: { children?: string; conversion: any },
-        ) {
-          const haveChildren = Array.isArray(data[children]) && data[children].length > 0;
-          const conversionData = conversion(data) || {};
-          if (haveChildren) {
-            return {
-              ...conversionData,
-              [children]: data[children].map((i: number) =>
-                treeMapEach(i, {
-                  children,
-                  conversion,
-                }),
-              ),
-            };
-          } else {
-            return {
-              ...conversionData,
-            };
-          }
-        }
-        function treeMap<T = any>(treeData: T[], opt: { children?: string; conversion: any }): T[] {
-          return treeData.map((item) => treeMapEach(item, opt));
-        }
-        const list = treeMap(routeList, {
-          conversion: (node: any) => {
-            const { meta: { title, hideMenu = false } = {} } = node;
-      
-            return {
-              ...(node.meta || {}),
-              meta: node.meta,
-              name: title,
-              hideMenu,
-              path: node.path,
-              ...(node.redirect ? { redirect: node.redirect } : {}),
-            };
-          },
-        });
-        // joinParentPath(list);
-        return cloneDeep(list);
-      }
+      const routeList = transformObjToRoute(data.value);
+      this.setMenuList(transformRouteToMenu(data.value));
 
-      // Dynamically introduce components
-      // routeList = transformObjToRoute(routeList);
+      loading.destroy();
 
-      // //  Background routing to menu structure
-      // const backMenuList = transformRouteToMenu(routeList);
-      // this.setBackMenuList(backMenuList);
-
-      // // remove meta.ignoreRoute item
-      // routeList = filter(routeList, routeRemoveIgnoreFilter);
-      // routeList = routeList.filter(routeRemoveIgnoreFilter);
-
-      // routeList = flatMultiLevelRoutes(routeList);
-      // routes = [PAGE_NOT_FOUND_ROUTE, ...routeList];
-
-      // routes.push(ERROR_LOG_ROUTE);
-      // patchHomeAffix(routes);
-      return transformRouteToMenu(routeList);
+      return routeList;
     },
   },
 });
